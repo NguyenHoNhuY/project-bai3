@@ -1,0 +1,23 @@
+<div class="container">
+  <a class="btn btn-secondary btn-lg mb-2" href="/category/add">Add Item</a>
+  <table class="table table-dark table-hover">
+    <tr>
+      <th>Name</th>
+      <th>Edit</th>
+      <th>Delete</th>
+    </tr>
+    <% categories.map(item =>{%>
+    <tr>
+      <td><%= item.name %></td>
+      <td>
+        <a href="/category/edit/<%= item._id %>" class="btn btn-warning">
+          Edit
+        </a>
+      </td>
+      <td>
+        <%-include("../part/deleteForm",{url:`/category/delete/${item._id}?_method=DELETE`})%>
+      </td>
+    </tr>
+    <%})%>
+  </table>
+</div>

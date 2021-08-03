@@ -1,0 +1,6 @@
+<div class="container w-50">
+  <h1>Edit Product</h1>
+  <form action="/product/edit/<%= product._id %>?_method=PUT " method="post">
+    <%- include("./form") %>
+  </form>
+</div>

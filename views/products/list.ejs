@@ -1,0 +1,33 @@
+<div class="container">
+  <a class="btn btn-secondary btn-lg mb-2" href="/product/add">Add Product</a>
+  <table class="table table-dark table-hover">
+    <tr>
+      <th>Tên sản phẩm</th>
+      <th>Mô tả sản phẩm</th>
+      <th>Giá</th>
+      <th>Số lượng</th>
+      <th>Thể loại</th>
+      <th>Edit</th>
+      <th>Delete</th>
+    </tr>
+    <% products.map(item =>{%>
+    <tr>
+      <td><%= item.name %></td>
+      <td><%= item.info %></td>
+      <td><%= item.price %></td>
+      <td><%= item.quantity %></td>
+      <td>
+        <% if (item.category) { %> <%= item.category.name %> <% } %>
+      </td>
+      <td>
+        <a href="/product/edit/<%= item._id %>" class="btn btn-warning">
+          Edit
+        </a>
+      </td>
+      <td>
+        <%-include("../part/deleteForm",{url:`/product/delete/${item._id}?_method=DELETE`})%>
+      </td>
+    </tr>
+    <%})%>
+  </table>
+</div>

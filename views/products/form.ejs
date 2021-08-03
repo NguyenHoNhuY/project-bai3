@@ -1,0 +1,47 @@
+<div class="form-floating mb-3">
+  <input
+    type="text"
+    class="form-control"
+    name="name"
+    value="<%= product.name %>"
+  />
+  <label for="floatingInput">Tên sản phẩm</label>
+</div>
+<div class="form-floating mb-3">
+  <input
+    type="text"
+    class="form-control"
+    name="info"
+    value="<%= product.info %>"
+  />
+  <label for="floatingInput">Mô tả sản phẩm</label>
+</div>
+<div class="form-floating mb-3">
+  <input
+    type="text"
+    class="form-control"
+    name="price"
+    value="<%= product.price %>"
+  />
+  <label for="floatingInput">Giá</label>
+</div>
+<div class="form-floating mb-3">
+  <input
+    type="text"
+    class="form-control"
+    name="quantity"
+    value="<%= product.quantity %>"
+  />
+  <label for="floatingInput">Số lượng</label>
+</div>
+<div class="form-floating mb-3">
+  <select name="category" id="">
+    <% categories.map(item=>{%>
+    <option value="<%= item._id %>"><%= item.name %></option>
+    <!-- ! value=id để liên kết với bảng product bằng id -->
+    <% }) %>
+  </select>
+</div>
+<div class="form-floating mb-3">
+  <input type="submit" class="form-control btn btn-success" value="save" />
+</div>
