@@ -28,7 +28,7 @@ app.use(session({
 
 const connect = async () => {
   try {
-    await mongoose.connect("mongodb+srv://nguyenhonhuy:nguyen11052001@cluster0.qzm4e.mongodb.net/bai1?retryWrites=true&w=majority", {
+    await mongoose.connect(process.env.STR_CONNECT, {
       useNewUrlParser: true,
       useUnifiedTopology: true,
       useFindAndModify: false,
@@ -48,4 +48,4 @@ app.use("/category", categoryRouter);
 app.use("/product", productRouter);
 app.use("/cart", cartRouter);
 
-app.listen(3000);
+app.listen(process.env.PORT || 3000);

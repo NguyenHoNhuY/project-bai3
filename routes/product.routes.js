@@ -62,6 +62,11 @@ router.put("/edit/:id", async (req, res) => {
     product.price = req.body.price;
     product.quantity = req.body.quantity;
     product.category = req.body.category;
+    if (req.body.image) {
+      const imageEncode = JSON.parse(req.body.image);
+      product.imageType = imageEncode.type;
+      product.imageData = new Buffer.from(imageEncode.data, "base64");
+    }
     await product.save();
     res.redirect("/product");
   } catch (e) {
