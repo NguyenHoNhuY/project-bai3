@@ -1,0 +1,38 @@
+<div class="container">
+  <h2 class="w-100 text-center">Giỏ hàng</h2>
+  <table class="table table-dark table-hover">
+    <tr>
+      <th>Tên sản phẩm</th>
+      <th>Giá</th>
+      <th>Hình ảnh</th>
+      <th>Số lượng</th>
+      <th>Tổng tiền</th>
+      <th>Delete</th>
+    </tr>
+    <% cart.map(cart =>{%>
+    <tr>
+      <td><%= cart.item.name %></td>
+      <td><%= cart.item.price %></td>
+      <td><img src="<%= cart.imageSrc%>" width="50px" alt="" /></td>
+      <td>
+        <div class="amount-content">
+          <button class="button-up-and-down">
+            <a href="/cart/reduce/<%= cart.id %> ">-</a>
+          </button>
+          <span class="amount"><%= cart.amount %> </span>
+          <button class="button-up-and-down">
+            <a href="/cart/increase/<%= cart.id %> ">+</a>
+          </button>
+        </div>
+      </td>
+      <td><%= cart.amount* cart.item.price%></td>
+      <td>
+        <%-include("../part/deleteForm",{url:`/cart/delete/${cart.id}?_method=DELETE`})%>
+      </td>
+    </tr>
+    <%})%>
+  </table>
+  <div class="total">
+    <p>Tổng tiền thanh toán : <span><%= total %> đ </span></p>
+  </div>
+</div>

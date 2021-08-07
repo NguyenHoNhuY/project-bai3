@@ -1,12 +1,23 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <h1> trang chủ</h1>
-</body>
-</html>
+<div class="container">
+  <div class="row">
+    <% products.map(item=>{ %>
+    <div class="col-sm-6 col-md-3">
+      <div class="product-card">
+        <div class="img">
+          <img src="<%= item.imageSrc %> " alt="" />
+        </div>
+        <div class="content">
+          <p><%= item.name %></p>
+          <p><%= item.price %></p>
+        </div>
+        <div class="button">
+          <a href="/cart/add/<%= item._id %> " class="btn btn-success"
+            >Add To Cart</a
+          >
+        </div>
+      </div>
+    </div>
+
+    <% }) %>
+  </div>
+</div>

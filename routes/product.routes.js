@@ -5,7 +5,6 @@ const categoryModel = require("../models/category.model");
 router.get("/", async (req, res) => {
   try {
     const products = await productModel.find().populate("category", ["name"]); //!tham chiếu đến thuộc tính category lấy name
-    console.log({ products: products });
     res.render("products/list", { products: products });
   } catch (e) {
     console.log(e);
@@ -31,6 +30,13 @@ router.post("/add", async (req, res) => {
       quantity: req.body.quantity,
       category: req.body.category,
     });
+
+    if (req.body.image) {
+      const imageEncode = JSON.parse(req.body.image);
+      product.imageType = imageEncode.type;
+      product.imageData = new Buffer.from(imageEncode.data, "base64");
+    }
+
     await product.save();
     res.redirect("/product");
   } catch (e) {

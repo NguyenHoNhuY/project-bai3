@@ -1,4 +1,5 @@
 const router = require("express").Router();
+const { findByIdAndDelete } = require("../models/category.model");
 const categoryModel = require("../models/category.model");
 
 router.get("/", async (req, res) => {
@@ -56,7 +57,7 @@ router.put("/edit/:id", async (req, res) => {
 
 router.delete("/delete/:id", async (req, res) => {
   try {
-    let categories = await categoryModel.findByIdAndDelete(req.params.id);
+    let categories = await categoryModel.findOneAndDelete({_id:req.params.id});
     res.redirect("/category");
   } catch (e) {
     console.log(e);

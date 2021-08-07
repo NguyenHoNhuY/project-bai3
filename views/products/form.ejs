@@ -35,6 +35,15 @@
   <label for="floatingInput">Số lượng</label>
 </div>
 <div class="form-floating mb-3">
+  <input
+    type="file"
+    class="filepond"
+    name="image"
+    value=""
+  />
+  <label for="floatingInput">Ảnh minh họa</label>
+</div>
+<div class="form-floating mb-3">
   <select name="category" id="">
     <% categories.map(item=>{%>
     <option value="<%= item._id %>"><%= item.name %></option>

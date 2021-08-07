@@ -1,11 +1,14 @@
 const router = require("express").Router();
+const productModel = require("../models/product.model");
 
-router.get("/", (req, res) => {
-  res.render("index");
-});
-
-router.get("/another-route", (req, res) => {
-  // router code here
+router.get("/", async (req, res) => {
+  try {
+    const products = await productModel.find().populate("category", ["name"]);
+    res.render("index", { products: products });
+  } catch (e) {
+    console.log(e);
+    res.redirect("/");
+  }
 });
 
 module.exports = router;
