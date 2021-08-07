@@ -28,7 +28,7 @@ app.use(session({
 
 const connect = async () => {
   try {
-    await mongoose.connect("mongodb://localhost/bai3", {
+    await mongoose.connect("mongodb+srv://nguyenhonhuy:nguyen11052001@cluster0.qzm4e.mongodb.net/bai1?retryWrites=true&w=majority", {
       useNewUrlParser: true,
       useUnifiedTopology: true,
       useFindAndModify: false,
