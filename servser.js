@@ -48,4 +48,4 @@ app.use("/category", categoryRouter);
 app.use("/product", productRouter);
 app.use("/cart", cartRouter);
 
-app.listen(process.env.PORT || 3000);
+app.listen(process.env.PORT || 4000);
